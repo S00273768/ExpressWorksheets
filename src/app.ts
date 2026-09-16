@@ -1,11 +1,11 @@
 import express, {Application, Request, Response} from "express";
 
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT||2000;
 const app: Application = express();
 
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({
-        message: "Hello from Una"
+        message: "Hello from Eliska"
     });
 });
 
