@@ -22,3 +22,13 @@ Type npm i -D typescript
 Type npm i -D @types/express @types/node  
 
     This adds the types which are used by express and node. 
+
+
+
+To run
+npm i -D tsx 
+
+To install tsx as a development dependency, 
+
+npm run dev
+Now when you type npm run dev you are running a monitoring program which looks for changes in the src folder and if it finds them rebuilds the code and executes it. 
