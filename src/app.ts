@@ -12,6 +12,7 @@ const app: Application = express();
 });
 */
 app.use('/api/v1/cars', carRoutes);
+app.use(express.json());
 
 app.get("/ping", async (_req : Request, res: Response) => {
     res.json({
