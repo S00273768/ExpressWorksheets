@@ -1,0 +1,24 @@
+Everytime for setup
+
+git config user.name "Eliska Tinterova"
+git config user.email "s00273768@atu.ie"
+
+npm init -y 
+
+    You have just created a package.json file, open it and look at the contents.  
+
+Type npm i express 
+
+    Notice your package.json file has changed. It should now include a dependency to express.  
+
+ 
+
+Type npm i -D typescript 
+
+    Notice your package.json file now contains a development dependency to Typescript. 
+
+ 
+
+Type npm i -D @types/express @types/node  
+
+    This adds the types which are used by express and node. 
