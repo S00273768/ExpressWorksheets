@@ -12,3 +12,5 @@ const carSchema = new Schema <ICar>(
     },
     {timestamps: true}
 );
+
+export const CarModel = model <ICar>('Car', carSchema);
