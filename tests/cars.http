@@ -1,10 +1,14 @@
-@endpoint = http://localhost:2500/api/v1/cars
+@endpoint = http://localhost:3000/api/v1/cars
 
 ###
 POST {{endpoint}} HTTP/1.1
 content-type: application/json
 
-    "test" : "post test" 
+
+   
+    "model":"Copper",
+     "make":"Mini"
+
 
 
 ###
@@ -28,5 +32,8 @@ content-type: application/json
 PUT  {{endpoint}}/sillycarID HTTP/3.0
 content-type: application/json
   
-     "test" : "post test" 
+        
+    "model":"Copper",
+     "make":"Mini"
+
   
