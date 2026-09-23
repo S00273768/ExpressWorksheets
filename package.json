@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Tinteel/ExpressWorksheets#readme",
   "dependencies": {
+    "dotenv": "^18.0.3",
     "express": "^5.2.1"
   },
   "devDependencies": {
