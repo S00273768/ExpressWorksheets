@@ -1,5 +1,6 @@
 @endpoint = http://localhost:3000/api/v1/cars
 
+
 ###
 POST {{endpoint}} HTTP/1.1
 content-type: application/json
@@ -21,8 +22,14 @@ content-type: application/json
 
 ###
 
-DELETE  {{endpoint}}/sillycarID HTTP/3.0
+DELETE  {{endpoint}}/6ab54700987087d3b9b4ef8c HTTP/1.1
 content-type: application/json
+
+{
+    "id":"6ab5433b731233603477082e"
+}
+
+
 
 ###
 
