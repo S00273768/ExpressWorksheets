@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 export interface ICar{
     make : string;
@@ -13,4 +13,4 @@ const carSchema = new Schema <ICar>(
     {timestamps: true}
 );
 
-export const CarModel = model <ICar>('Car', carSchema);
+export const CarModel = model<ICar>('Car', carSchema);

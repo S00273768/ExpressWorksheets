@@ -43,6 +43,7 @@ export class CarController
 
     createCar = async (req:Request, res:Response):Promise<void> =>{
     try {
+        console.log(req.body);
         const newCar = await carService.createCar(req.body);
         res.status(201).json(newCar);
     } catch (error) {
