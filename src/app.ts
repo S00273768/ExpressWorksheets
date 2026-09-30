@@ -1,10 +1,12 @@
 import express, {Application, Request, Response} from "express";
+import { authenticateKey } from "./middleware/auth.middleware";
 
 import { env } from "./config/env";
 
 import carRoutes from './routes/cars';
 import { connectDB } from "./config/database";
 import { start } from "repl";
+import { logging } from "./middleware/logging.middleware";
 
 const PORT = env.port;
 const app: Application = express();
@@ -15,6 +17,7 @@ const app: Application = express();
 
 });
 */
+app.use(logging);
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
 
