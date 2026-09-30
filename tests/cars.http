@@ -9,7 +9,8 @@ content-type: application/json
 
    {
     "make":"Mini",
-    "model":"Copper"
+    "model":"Cooper",
+    "year": 1950
    }
 
 ###
@@ -23,10 +24,15 @@ x-api-key: blahblah
 ###
 GET  {{endpoint}}/{{newCar}} HTTP/3.0
 content-type: application/json
+x-api-key: blahblah
 
 ###
-GET  {{endpoint}}/sillycarID HTTP/3.0
+GET  {{endpoint}}/:id HTTP/3.0
 content-type: application/json
+x-api-key: blahblah
+{
+    "_id": "6abcd535d02134a4c5c54f7b"
+}
 
 
 ###
@@ -35,18 +41,20 @@ DELETE  {{endpoint}}/:id HTTP/1.1
 content-type: application/json
 
 {
-    "_id":"6abcc3de09e8ab3a52192a23"
+    "_id":"6abccfecba01a6609d1a7d5d"
 }
 
 
 
 ###
 
-PUT  {{endpoint}}/sillycarID HTTP/3.0
+PUT  {{endpoint}}/:id HTTP/3.0
 content-type: application/json
   
-{      
+{   
+    "id" : "6abcd535d02134a4c5c54f7b",   
     "model":"Copper",
-     "make":"Mini"
+     "make":"Mini", 
+     "year" : 1980
 }
   
