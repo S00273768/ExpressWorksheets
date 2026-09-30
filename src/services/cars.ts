@@ -16,7 +16,7 @@ export class CarService{
     }
 
     async updateCar(id: string, carData : Partial <ICar>):Promise <ICar |null>{
-        return await CarModel.findByIdAndUpdate (id, carData, {returnDocument:'after'}).lean();
+        return await CarModel.findByIdAndUpdate (id, carData /*, {returnDocument:'after'} */).lean();
     }
 
     async deleteCar (id:string) : Promise <ICar|null>{

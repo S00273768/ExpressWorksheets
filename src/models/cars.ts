@@ -8,6 +8,7 @@ export interface ICar{
 }
 
 export const createCarZSchema = z.object ({
+    id : z.string().optional(),
     make : z.string().min(1),
     model : z.string().min(1),
     year : z.number().min(1950).optional(),
