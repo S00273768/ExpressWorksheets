@@ -10,7 +10,7 @@ content-type: application/json
    {
     "make":"Mini",
     "model":"Cooper",
-    "year": ""
+    "year": 1950
    }
 
 ###
