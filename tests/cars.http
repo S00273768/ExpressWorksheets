@@ -22,11 +22,11 @@ content-type: application/json
 
 ###
 
-DELETE  {{endpoint}}/6ab54700987087d3b9b4ef8c HTTP/1.1
+DELETE  {{endpoint}}/:id HTTP/1.1
 content-type: application/json
 
 {
-    "id":"6ab5433b731233603477082e"
+    "_id":"6abcc3de09e8ab3a52192a23"
 }
 
 
