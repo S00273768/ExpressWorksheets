@@ -68,7 +68,7 @@ export class CarController
 
     updateCar = async (req:Request, res:Response):Promise<void> =>{
     try {
-        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const id = req.body;
         const updatedCar = await carService.updateCar(id, req.body);
         if (!updatedCar) {
             res.status(404).json({ message: 'Car not found' });
