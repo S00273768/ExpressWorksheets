@@ -9,7 +9,8 @@ content-type: application/json
 
    {
     "make":"Mini",
-    "model":"Copper"
+    "model":"Cooper",
+    "year": ""
    }
 
 ###
@@ -35,7 +36,7 @@ DELETE  {{endpoint}}/:id HTTP/1.1
 content-type: application/json
 
 {
-    "_id":"6abcc3de09e8ab3a52192a23"
+    "_id":"6abccfecba01a6609d1a7d5d"
 }
 
 
