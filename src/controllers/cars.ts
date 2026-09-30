@@ -75,9 +75,22 @@ export class CarController
     };
 
     deletCar = async (req:Request, res:Response):Promise<void> =>{
-    res.status(200).json({success :true,
+
+        try {
+            const id = req.body;
+            const car = await carService.deleteCar(id);
+            if (!car) {
+                res.status(404).json({ message: 'Car not found' });
+                return;
+        }
+            res.status(200).json(car);
+        } catch (error) {
+            res.status(500).json({ message: 'Error deleting car', error });
+        }
+ 
+        /*  res.status(200).json({success :true,
         data: `This is just dummy for now a response to the delete car by id request with car id ${req.params.id}`
-    });
+    });*/
     };
 
 }
