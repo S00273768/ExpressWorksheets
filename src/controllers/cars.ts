@@ -8,7 +8,19 @@ const carService = new CarService();
 
 export class CarController
 {
-
+    /**
+ * @openapi
+ * /cars:
+ *   get:
+ *     summary: Retrieve all cars
+ *     tags:
+ *       - Cars
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved cars
+ *       500:
+ *         description: Internal server error
+ */
 
     getCars = async (_req: Request, res: Response): Promise<void> => {
        try{
@@ -27,7 +39,9 @@ export class CarController
     getCarsById = async (req:Request, res:Response):Promise<void> =>{
 
         try {
-            const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            //const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            const id = req.body.id;
+            console.log(id);
             const car = await carService.getCarById(id);
             if (!car) {
                 res.status(404).json({ message: 'Car not found' });

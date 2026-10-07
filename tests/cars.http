@@ -7,11 +7,12 @@
 POST {{endpoint}} HTTP/1.1
 content-type: application/json
 
-   {
+{
     "make":"Mini",
     "model":"Cooper",
     "year": 1950
-   }
+}
+
 
 ###
 @newCar = {{postACar.response.body._id}}
@@ -30,9 +31,12 @@ x-api-key: blahblah
 GET  {{endpoint}}/:id HTTP/3.0
 content-type: application/json
 x-api-key: blahblah
+
 {
-    "_id": "6abcd535d02134a4c5c54f7b"
+    "id": "6ac6027c0cc1d87d8d682f08"
 }
+
+
 
 
 ###
@@ -41,7 +45,7 @@ DELETE  {{endpoint}}/:id HTTP/1.1
 content-type: application/json
 
 {
-    "_id":"6abccfecba01a6609d1a7d5d"
+    "_id":"6abcd0b71a719bf37e24177e"
 }
 
 
