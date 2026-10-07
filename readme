@@ -50,6 +50,7 @@ npm install swagger-ui-express
 //Installed developer dependencies
 npm i -D @types/swagger-jsdoc
 npm i -D @types/swagger-ui-express
+npm install -D vitest supertest @types/supertest typescript
 
 
 //Tips
