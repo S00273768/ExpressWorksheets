@@ -8,6 +8,9 @@ import { connectDB } from "./config/database";
 import { start } from "repl";
 import { logging } from "./middleware/logging.middleware";
 
+import { swaggerSpec } from "./config/swagger";
+import swaggerUi from 'swagger-ui-express';
+
 const PORT = env.port;
 const app: Application = express();
 
@@ -17,9 +20,14 @@ const app: Application = express();
 
 });
 */
-app.use(logging);
+
+
+//app.use(logging);
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
 
 
 app.get("/ping", async (_req : Request, res: Response) => {

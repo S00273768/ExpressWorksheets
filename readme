@@ -1,7 +1,7 @@
 Everytime for setup
 
-git config user.name "Eliska Tinterova"
-git config user.email "s00273768@atu.ie"
+git config user.name ""
+git config user.email ""
 
 npm init -y 
 
@@ -40,7 +40,23 @@ NODE_ENV=development
 MONGODB_URI= //add everytime password
 
 
+//Installed packages
+npm install zod
+
+npm install swagger-jsdoc
+
+npm install swagger-ui-express
+
+//Installed developer dependencies
+npm i -D @types/swagger-jsdoc
+npm i -D @types/swagger-ui-express
+
 
 //Tips
 npm i package name
     To install any package, change the package name
+
+npm i -D @dependencies name
+    to install any dependencie, change the dependencies name
+
+dependencies import without brakets

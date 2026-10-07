@@ -8,7 +8,19 @@ const carService = new CarService();
 
 export class CarController
 {
-
+/**
+ * @openapi
+ * /cars:
+ *   get:
+ *     summary: Retrieve all cars
+ *     tags:
+ *       - Cars
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved cars
+ *       500:
+ *         description: Internal server error
+ */
 
     getCars = async (_req: Request, res: Response): Promise<void> => {
        try{
@@ -24,10 +36,37 @@ export class CarController
         });*/
     };
 
+    /**
+    * @openapi
+    * /cars/{id}:
+    *   get:
+    *     summary: Get a car by ID
+    *     tags:
+    *       - Cars
+    *     parameters:
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *     responses:
+    *       200:
+    *         description: Car found
+    *       404:
+    *         description: Car not found
+    *       500:
+    *         description: Internal server error
+    */
+
+
     getCarsById = async (req:Request, res:Response):Promise<void> =>{
 
         try {
+            //works for swagger
             const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            //works for RestClient
+            //const id = req.body.id;
+            console.log(id);
             const car = await carService.getCarById(id);
             if (!car) {
                 res.status(404).json({ message: 'Car not found' });
@@ -42,6 +81,30 @@ export class CarController
             data: `This is just dummy for now a response to the get car by id request with car id ${req.params.id}`
         });*/
     };
+
+      /**
+ * @openapi
+ * /cars:
+ *   post:
+ *     summary: Create a new car
+ *     tags:
+ *       - Cars
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateCarInput'
+ *     responses:
+ *       201:
+ *         description: Successfully created car
+ *       400:
+ *         description: Bad request
+ *       500:
+ *         description: Internal server error
+ */
+
+
 
     createCar = async (req:Request, res:Response):Promise<void> =>{
     try {
@@ -86,10 +149,37 @@ export class CarController
     });*/
     };
 
+    
+/**
+* @openapi
+* /cars/{id}:
+*   delete:
+*     summary: Delete a car by ID
+*     tags:
+*       - Cars
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: string
+*     responses:
+*       200:
+*         description: Car found
+*       404:
+*         description: Car not found
+*       500:
+*         description: Internal server error
+*/
+
+
     deletCar = async (req:Request, res:Response):Promise<void> =>{
 
         try {
-            const id = req.body;
+            //working for swagger
+            const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            //working for RestClient
+            //const id = req.body;
             const car = await carService.deleteCar(id);
             if (!car) {
                 res.status(404).json({ message: 'Car not found' });
