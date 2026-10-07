@@ -125,10 +125,37 @@ export class CarController
     });*/
     };
 
+    
+/**
+* @openapi
+* /cars/{id}:
+*   delete:
+*     summary: Delete a car by ID
+*     tags:
+*       - Cars
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: string
+*     responses:
+*       200:
+*         description: Car found
+*       404:
+*         description: Car not found
+*       500:
+*         description: Internal server error
+*/
+
+
     deletCar = async (req:Request, res:Response):Promise<void> =>{
 
         try {
-            const id = req.body;
+            //working for swagger
+            const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            //working for RestClient
+            //const id = req.body;
             const car = await carService.deleteCar(id);
             if (!car) {
                 res.status(404).json({ message: 'Car not found' });

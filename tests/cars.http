@@ -45,7 +45,7 @@ DELETE  {{endpoint}}/:id HTTP/1.1
 content-type: application/json
 
 {
-    "_id":"6abcd0b71a719bf37e24177e"
+    "_id":"6ac602d862ecd6a5c914c545"
 }
 
 
