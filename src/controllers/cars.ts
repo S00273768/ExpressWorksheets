@@ -36,11 +36,36 @@ export class CarController
         });*/
     };
 
+    /**
+    * @openapi
+    * /cars/{id}:
+    *   get:
+    *     summary: Get a car by ID
+    *     tags:
+    *       - Cars
+    *     parameters:
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *     responses:
+    *       200:
+    *         description: Car found
+    *       404:
+    *         description: Car not found
+    *       500:
+    *         description: Internal server error
+    */
+
+
     getCarsById = async (req:Request, res:Response):Promise<void> =>{
 
         try {
-            //const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
-            const id = req.body.id;
+            //works for swagger
+            const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+            //works for RestClient
+            //const id = req.body.id;
             console.log(id);
             const car = await carService.getCarById(id);
             if (!car) {
