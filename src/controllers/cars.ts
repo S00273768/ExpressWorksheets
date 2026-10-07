@@ -8,7 +8,7 @@ const carService = new CarService();
 
 export class CarController
 {
-    /**
+/**
  * @openapi
  * /cars:
  *   get:
@@ -81,6 +81,30 @@ export class CarController
             data: `This is just dummy for now a response to the get car by id request with car id ${req.params.id}`
         });*/
     };
+
+      /**
+ * @openapi
+ * /cars:
+ *   post:
+ *     summary: Create a new car
+ *     tags:
+ *       - Cars
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateCarInput'
+ *     responses:
+ *       201:
+ *         description: Successfully created car
+ *       400:
+ *         description: Bad request
+ *       500:
+ *         description: Internal server error
+ */
+
+
 
     createCar = async (req:Request, res:Response):Promise<void> =>{
     try {
