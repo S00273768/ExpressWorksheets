@@ -33,6 +33,9 @@ To install tsx as a development dependency,
 npm run dev
 Now when you type npm run dev you are running a monitoring program which looks for changes in the src folder and if it finds them rebuilds the code and executes it. 
 
+npm run test
+You can run all the tests in your test folder by running npm run test or all the tests in an individual file by running npm run test filename
+
 
 .env file 
 PORT=3000
