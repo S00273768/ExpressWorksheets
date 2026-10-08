@@ -55,7 +55,7 @@ app.get("/cake", async (_req : Request, res: Response) => {
 });
 
 const startServer = async () => {
-    await connectDB();
+    //await connectDB();
 
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
