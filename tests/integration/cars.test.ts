@@ -2,11 +2,11 @@ import request from "supertest";
 import {app} from "../../src/app";
 
 //Do not need since connected already in app.ts
-import { connectDB } from "../../src/config/database";
+/*import { connectDB } from "../../src/config/database";
 
 beforeAll(async () => {
     await connectDB();
-});
+});*/
 
 describe("GET /cars", () => {
     it("return all cars", async () => {
