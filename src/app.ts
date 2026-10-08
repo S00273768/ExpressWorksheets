@@ -11,8 +11,9 @@ import { logging } from "./middleware/logging.middleware";
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
 
+
 const PORT = env.port;
-const app: Application = express();
+export const app: Application = express();
 
 /*app.use((req, _res, next) =>{
     console.log("${req.method} ${req.originalUrl}");

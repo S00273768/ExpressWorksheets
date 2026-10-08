@@ -23,7 +23,7 @@
 
         /*Emit & Types*/
         "sourceMap": true,
-        "types": ["node", "vitst/globals"]
+        "types": ["node", "vitest/globals"]
     },
 
     "include": ["src/**/*", "tests/**/*"],
