@@ -54,6 +54,8 @@ app.get("/cake", async (_req : Request, res: Response) => {
    
 });
 
+//stating in server.ts
+/*
 const startServer = async () => {
     //await connectDB();
 
@@ -62,7 +64,7 @@ const startServer = async () => {
     });
 };
 
-startServer();
+startServer();/
 
 /*
 app.listen(PORT, () =>{
