@@ -11,6 +11,8 @@ import { logging } from "./middleware/logging.middleware";
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
 
+import cors from "cors";
+
 
 const PORT = env.port;
 export const app: Application = express();
