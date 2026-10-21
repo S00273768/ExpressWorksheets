@@ -27,7 +27,7 @@ export const app: Application = express();
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use(cors()); //from Worksheet1 Angular
 
 
 
