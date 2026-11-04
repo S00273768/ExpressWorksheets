@@ -25,7 +25,11 @@ export const app: Application = express();
 */
 
 
-//app.use(logging);
+//app.use(logging)
+//Special code to add delay => remove later
+app.use((_req, __res, next) => setTimeout(next,2000));//from Worksheet3 Angular
+
+
 app.use(cors()); //from Worksheet1 Angular
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
