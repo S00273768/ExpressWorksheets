@@ -44,6 +44,19 @@ app.get("/ping", async (_req : Request, res: Response) => {
     });
 });
 
+app.get("/pong", (_req : Request, res: Response) => {
+    console.log("Received request to /pong");
+    throw new Error ("Simulated error in /pong route");
+});
+
+app.get("/pung", async (_req : Request, res: Response) =>
+{
+    console.log("Receives request to /pung");
+    throw new Error ("Simulated error in /pung route");
+});
+
+
+
 app.get("/bananas", async (_req : Request, res: Response) => {
     res.json({
         message: "this is bananas"
