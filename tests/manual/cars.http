@@ -49,16 +49,30 @@ content-type: application/json
 }
 
 
+###
+
+PUT  {{endpoint}}/6afd73585bcd0693bed426e9 HTTP/3.0
+content-type: application/json
+
+{
+    "make":"Una",
+    "model":"Cooper",
+    "year": 1950
+}
+
 
 ###
 
-PUT  {{endpoint}}/:id HTTP/3.0
+<!--
+###
+PUT  {{endpoint}}/{{newCar}} HTTP/3.0
 content-type: application/json
+x-api-key: blahblah
   
-{   
-    "id" : "6abcd535d02134a4c5c54f7b",   
+{     
     "model":"Copper",
      "make":"Mini", 
      "year" : 1980
 }
-  
+-->
+

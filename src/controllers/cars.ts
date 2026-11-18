@@ -131,7 +131,8 @@ export class CarController
 
     updateCar = async (req:Request, res:Response):Promise<void> =>{
     try {
-        const id = req.body.id;
+        //const id = req.params.id;
+        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
         console.log(req.body)
         const updatedCar = await carService.updateCar(id, req.body);
         if (!updatedCar) {
