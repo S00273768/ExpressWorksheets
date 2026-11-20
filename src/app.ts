@@ -12,6 +12,7 @@ import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
 
 import cors from "cors";
+import { errorHandler } from "./middleware/errors.middleware";
 
 
 const PORT = env.port;
@@ -34,6 +35,7 @@ app.use(cors()); //from Worksheet1 Angular
 app.use(express.json());
 app.use('/api/v1/cars', carRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(errorHandler)
 
 
 
