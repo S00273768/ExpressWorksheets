@@ -61,7 +61,11 @@ export class CarController
 
     getCarsById = async (req:Request, res:Response):Promise<void> =>{
 
-        try {
+        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const car = await carService.getCarById(id);
+        res.status(200).json(car);
+
+        /*try {
             //works for swagger
             const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
             //works for RestClient
@@ -75,7 +79,7 @@ export class CarController
             res.status(200).json(car);
         } catch (error) {
             res.status(500).json({ message: 'Error fetching car', error });
-        }
+        }*/
 
         /*res.status(200).json({success :true,
             data: `This is just dummy for now a response to the get car by id request with car id ${req.params.id}`
@@ -130,7 +134,11 @@ export class CarController
     };
 
     updateCar = async (req:Request, res:Response):Promise<void> =>{
-    try {
+        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const updatedCar = await carService.updateCar(id, req.body);
+        res.status(200).json(updatedCar);
+    
+       /* try {
         //const id = req.params.id;
         const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
         console.log(req.body)
@@ -142,7 +150,7 @@ export class CarController
         res.status(200).json(updatedCar);
     } catch (error) {
         res.status(500).json({ message: 'Error updating car', error });
-    }
+    }*/
   
 
     /*res.status(200).json({success :true,
@@ -174,8 +182,12 @@ export class CarController
 */
 
 
-    deletCar = async (req:Request, res:Response):Promise<void> =>{
+    deleteCar = async (req:Request, res:Response):Promise<void> =>{
+        const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const car = await carService.deleteCar(id);
+        res.status(200).json(car);
 
+        /*
         try {
             //working for swagger
             const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
@@ -189,7 +201,7 @@ export class CarController
             res.status(200).json(car);
         } catch (error) {
             res.status(500).json({ message: 'Error deleting car', error });
-        }
+        }*/
  
         /*  res.status(200).json({success :true,
         data: `This is just dummy for now a response to the delete car by id request with car id ${req.params.id}`
