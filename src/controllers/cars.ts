@@ -23,13 +23,15 @@ export class CarController
  */
 
     getCars = async (_req: Request, res: Response): Promise<void> => {
-       try{
+       const cars = await carService.getAllCars();
+       
+        /*try{
         const cars = await carService.getAllCars();
         res.status(200).json(cars);
        }
        catch (error){
         res.status(500).json({message: 'Error fetching cars', error});
-       }
+       }*/
        
         /* res.status(200).json({success : true,
             data:"this is just dummy for now a response to the get all cars request"
@@ -110,8 +112,16 @@ export class CarController
 
 
 
-    createCar = async (req:Request, res:Response):Promise<void> =>{
-    try {
+
+  createCar = async (req: Request, res: Response): Promise<void> => {
+
+
+      const newCar = await carService.createCar(req.body);
+
+      res.status(201).json(newCar);
+    
+
+        /*try {
         const validation = createCarZSchema.safeParse(req.body);
         console.log
 
@@ -126,7 +136,7 @@ export class CarController
         res.status(201).json(newCar);
     } catch (error) {
         res.status(500).json({ message: 'Error inserting into MongoDB', error });
-    }
+    }*/
 
     /*res.status(200).json({success :true,
         data: `This is just dummy for now a response to the create car request the data received in the request body is: ${JSON.stringify(req.body)}`
@@ -184,8 +194,8 @@ export class CarController
 
     deleteCar = async (req:Request, res:Response):Promise<void> =>{
         const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
-        const car = await carService.deleteCar(id);
-        res.status(200).json(car);
+        await carService.deleteCar(id);
+        res.status(204).send();
 
         /*
         try {

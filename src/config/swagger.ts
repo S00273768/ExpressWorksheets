@@ -10,6 +10,16 @@ const options: swaggerJSDoc.Options = {
           version: '1.0.0',
           description: 'REST API for managing cars'
        },
+       components: {
+        securitySchemes:{
+            ApiKeyAuth:{
+                type: "apiKey",
+                in: "header",
+                name: "x-api-key",
+            },
+        },
+       },
+
        servers: [
            {
                 url: "/api/v1",
