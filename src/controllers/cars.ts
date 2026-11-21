@@ -26,6 +26,7 @@ export class CarController
 
     getCars = async (_req: Request, res: Response): Promise<void> => {
        const cars = await carService.getAllCars();
+       res.status(200).json(cars);
        
         /*try{
         const cars = await carService.getAllCars();
