@@ -15,6 +15,8 @@ export class CarController
  *     summary: Retrieve all cars
  *     tags:
  *       - Cars
+ *     security:
+ *       - ApiKeyAuth: []
  *     responses:
  *       200:
  *         description: Successfully retrieved cars
