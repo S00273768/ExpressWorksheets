@@ -90,4 +90,10 @@ export class AuthService{
 
     }
 
+    async getUserById(id: string): Promise<PublicUser>{
+        const user = await UserModel.findById(id).lean();
+        if (!user) throw new UnauthorizedError('User not found');
+        return { _id: user._id.toString(), name: user.name, email: user.email};
+    }
+
 }
