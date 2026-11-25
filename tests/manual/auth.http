@@ -1,7 +1,8 @@
-@endpoint = http://localhost:3000/api/v1/auth/register
+@endpointRegister = http://localhost:3000/api/v1/auth/register
+@endpointLogin = http://localhost:3000/api/v1/auth/login
 
 ###
-POST {{endpoint}} HTTP/1.1
+POST {{endpointRegister}} HTTP/1.1
 content-type: application/json
 
 {
@@ -10,3 +11,12 @@ content-type: application/json
     "password": "1234566"
 }
 
+
+###
+POST {{endpointLogin}} HTTP/1.1
+content-type: application/json
+
+{
+    "email": "elis@email.cz",
+    "password": "1234266"
+}

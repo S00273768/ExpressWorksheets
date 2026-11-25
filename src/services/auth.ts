@@ -2,7 +2,10 @@ import argon2 from 'argon2';
 import { UserModel } from '../models/users';
 
 import { mongo } from 'mongoose';
-import { UserAlreadyExistsError } from '../apperrors/apperrors';
+import { UserAlreadyExistsError, UnauthorizedError } from '../apperrors/apperrors';
+
+import jwt from 'jsonwebtoken';
+import { env } from '../config/env';
 
 
 //What we put inside the token. Remember: anyone can read read the payload,
@@ -49,4 +52,42 @@ export class AuthService{
 
        
     }
+
+    createToken(payload: TokenPayload): string {
+        return jwt.sign(payload, env.jwtSecret, {
+            algorithm: 'HS256',
+            expiresIn: env.jwtExpiresIn as jwt.SignOptions['expiresIn'],
+        });
+    }
+
+    verifyToken (token: string): TokenPayload {
+        //Pin the algorithm so a token can't choose its own (e.g. "none")
+        return jwt.verify(token, env.jwtSecret, {algorithms: ['HS256']} ) as TokenPayload;
+    }
+
+    async login(email: string, password: string): Promise<string> {
+        const user = await UserModel.findOne({email})
+
+        if(!user) {
+            throw new UnauthorizedError("Invalid email or password");
+        }
+
+        const valid = await argon2.verify(user.passwordHash, password);
+        if (!valid)
+        {
+            throw new UnauthorizedError("Invalid email or password")
+        }
+
+        //if we'va raised the hash settings since this user registeredm
+        //re-hash now while we have their plain-text password.
+
+        if (argon2.needsRehash(user.passwordHash, hashOptions)) {
+            user.passwordHash = await argon2.hash(password, hashOptions);
+            await user.save();
+        }
+
+        return this.createToken({sub: user._id.toString(), email: user.email});
+
+    }
+
 }
