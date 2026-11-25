@@ -7,7 +7,7 @@ content-type: application/json
 
 {
     "name": "Eliska",
-    "email": "elis@email.cz",
+    "email": "eliska1@email.cz",
     "password": "1234566"
 }
 
@@ -17,6 +17,6 @@ POST {{endpointLogin}} HTTP/1.1
 content-type: application/json
 
 {
-    "email": "elis@email.cz",
-    "password": "1234266"
+    "email": "eliska1@email.cz",
+    "password": "1234566"
 }
