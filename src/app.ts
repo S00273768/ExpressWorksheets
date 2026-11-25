@@ -14,6 +14,8 @@ import swaggerUi from 'swagger-ui-express';
 import cors from "cors";
 import { errorHandler } from "./middleware/errors.middleware";
 
+import authRoutes from './routes/auth';
+
 
 //const PORT = env.port;
 export const app: Application = express();
@@ -79,6 +81,7 @@ app.get("/cake", async (_req : Request, res: Response) => {
 });
 
 app.use('/api/v1/cars', carRoutes);
+app.use('/api/v1/auth', authRoutes)
 app.get('api-docs.json', (_reg, res) => {
     res.json(swaggerSpec);
 });

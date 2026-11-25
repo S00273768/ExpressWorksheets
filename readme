@@ -23,6 +23,12 @@ Type npm i -D @types/express @types/node
 
     This adds the types which are used by express and node. 
 
+npm i argon2
+
+npm i jsonwebtoken
+
+npm i -D @types/jsonwebtoken
+
 
 
 To run

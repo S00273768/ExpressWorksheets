@@ -1,0 +1,12 @@
+@endpoint = http://localhost:3000/api/v1/auth/register
+
+###
+POST {{endpoint}} HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Eliska",
+    "email": "elis@email.cz",
+    "password": "1234566"
+}
+
