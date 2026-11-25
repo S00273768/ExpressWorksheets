@@ -1,12 +1,6 @@
 import { Schema, model } from 'mongoose';
 import {z} from 'zod';
 
-export interface ICar{
-    make : string;
-    model : string;
-    year : number ;
-}
-
 /**
  * @openapi
  * components:
@@ -30,11 +24,29 @@ export interface ICar{
 
 
 export const createCarZSchema = z.object ({
-    id : z.string().optional(),
+    //id : z.string().optional(),
+    body: z.object({
     make : z.string().min(1),
     model : z.string().min(1),
     year : z.number().min(1950).optional(),
+    }),
 })
+
+export const updateCarZSchema = z.object({
+    body: z.object({
+        make: z.string().min(1),
+        model: z.string().min(1),
+        year: z.number().min(1950).optional(),
+    }),
+});
+
+export const carParamsSchema = z.object({
+    params: z.object({
+        id: z
+        .string()
+        .regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId')
+    })
+});
 
 
 
@@ -46,5 +58,13 @@ const carSchema = new Schema <ICar>(
     },
     {timestamps: true}
 );
+
+
+export interface ICar{
+    make : string;
+    model : string;
+    year? : number ;
+}
+
 
 export const CarModel = model<ICar>('Car', carSchema);

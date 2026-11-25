@@ -11,8 +11,11 @@ import { logging } from "./middleware/logging.middleware";
 import { swaggerSpec } from "./config/swagger";
 import swaggerUi from 'swagger-ui-express';
 
+import cors from "cors";
+import { errorHandler } from "./middleware/errors.middleware";
 
-const PORT = env.port;
+
+//const PORT = env.port;
 export const app: Application = express();
 
 /*app.use((req, _res, next) =>{
@@ -23,10 +26,18 @@ export const app: Application = express();
 */
 
 
-//app.use(logging);
+//app.use(logging)
+//Special code to add delay => remove later
+//app.use((_req, __res, next) => setTimeout(next,2000));//from Worksheet3 Angular
+
+
+app.use(cors()); //from Worksheet1 Angular
 app.use(express.json());
-app.use('/api/v1/cars', carRoutes);
+//app.use('/api/v1/cars', carRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+//Middleware to authenticate API key
+//app.use(authenticate Key);
 
 
 
@@ -36,6 +47,19 @@ app.get("/ping", async (_req : Request, res: Response) => {
         message: "Hello from Eliska"
     });
 });
+
+app.get("/pong", (_req : Request, res: Response) => {
+    console.log("Received request to /pong");
+    throw new Error ("Simulated error in /pong route");
+});
+
+app.get("/pung", async (_req : Request, res: Response) =>
+{
+    console.log("Receives request to /pung");
+    throw new Error ("Simulated error in /pung route");
+});
+
+
 
 app.get("/bananas", async (_req : Request, res: Response) => {
     res.json({
@@ -53,6 +77,13 @@ app.get("/cake", async (_req : Request, res: Response) => {
     });
    
 });
+
+app.use('/api/v1/cars', carRoutes);
+app.get('api-docs.json', (_reg, res) => {
+    res.json(swaggerSpec);
+});
+
+app.use(errorHandler)
 
 //stating in server.ts
 /*
