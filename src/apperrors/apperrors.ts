@@ -19,11 +19,11 @@ export class AppError extends Error {
     }
 }
 
-export class UnauthorizedError extends AppError{
+/*export class UnauthorizedError extends AppError{
     constructor(){
         super('Invalid credentials', 401);
     }
-}
+}*/
 
 export class NotFoundError extends AppError {
     constructor (resource: string) {
@@ -34,5 +34,17 @@ export class NotFoundError extends AppError {
 export class ValidationError extends AppError {
     constructor(message: string, public details?: unknown) {
         super(message, 400);
+    }
+}
+
+export class UserAlreadyExistsError extends AppError{
+    constructor(){
+        super('User already exists', 409);
+    }
+}
+
+export class UnauthorizedError extends AppError{
+    constructor(message: string){
+        super(message, 401);
     }
 }
